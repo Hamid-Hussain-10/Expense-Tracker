@@ -1,75 +1,79 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-export default function HomeScreen() {
+export default function Index() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("../../assets/images/credit-card.png")}
+          style={styles.cardImage}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>EXPENSE</Text>
+        <Text style={styles.title}>TRACKER</Text>
+        <Text style={styles.subtitle}>
+          The right app make it easy to manage your expenses on the go. Personal Capital - Expensify
+        </Text>
+
+      <TouchableOpacity style={styles.nextButton}>
+        <Text style={styles.nextButtonText}>Next</Text>
+      </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    backgroundColor: '#1A1A1A',
+    justifyContent: 'space-around',
+  },
+  imageContainer: {
+    position: 'relative',
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  cardImage: {
+    width: 500,
+    height: 300,
     position: 'absolute',
+    top: -50,
+    left: -50,
+    zIndex: 1,
+  },
+  textContainer: {
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 50,
+    fontWeight: '800',
+    fontStyle: 'italic',
+    color: '#ffffff',
+    textTransform: 'uppercase',
+    letterSpacing: 2,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#B0B0B0',
+    textAlign: 'center',
+    marginBottom: 20,
+    marginTop: 20,
+    paddingHorizontal: 20,
+  },
+  nextButton: {
+    backgroundColor: '#FFFFFF',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 25,
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  nextButtonText: {
+    color: '#1A1A1A',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
