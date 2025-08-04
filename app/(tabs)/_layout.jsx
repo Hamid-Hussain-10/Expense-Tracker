@@ -1,5 +1,5 @@
 import { Tabs, router } from "expo-router";
-import { Image, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
@@ -13,6 +13,7 @@ export default function TabsLayout() {
           backgroundColor: "#ff7301",
           height: 70,
         },
+        animation: "shift",
       }}
     >
       <Tabs.Screen
@@ -22,9 +23,9 @@ export default function TabsLayout() {
           headerShown: false,
           tabBarIcon: ({ color, focused }) =>
             focused ? (
-              <AntDesign name="home" size={23} color={color} />
+              <AntDesign name="home" size={24} color={color} />
             ) : (
-              <FontAwesome name="home" size={23} color={color} />
+              <FontAwesome name="home" size={24} color={color} />
             ),
         }}
       />
@@ -32,9 +33,8 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="add"
         options={{
-          title: "Add",
+          title: "Transactions",
           headerShown: true,
-          animation: "fade",
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => router.back()}
@@ -44,26 +44,25 @@ export default function TabsLayout() {
             </TouchableOpacity>
           ),
           headerRight: () => (
-            <Image
-              source={require("../../assets/images/credit-card.png")}
-              style={{ width: 50, height: 50, marginRight: 15 }}
-              resizeMode="contain"
-            />
+            <TouchableOpacity style={{ marginRight: 15 }}
+            onPress={() => router.push('profile')}>
+              <FontAwesome name="user" size={24} color="black" />
+            </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
-            <AntDesign name="plus" size={23} color={color} />
+            <AntDesign name="lock" size={24} color={color} />
           ),
         }}
       />
 
       <Tabs.Screen
-        name="summary"
+        name="profile"
         options={{
-          title: "Summary",
-          headerShown: true,
-          animation: "fade",
+          title: "Profile",
+          headerShown: false,
+          tabBarLabel: "Profile",
           tabBarIcon: ({ color }) => (
-            <AntDesign name="profile" size={23} color={color} />
+            <AntDesign name="user" size={24} color={color} />
           ),
         }}
       />

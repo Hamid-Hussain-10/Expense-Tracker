@@ -1,5 +1,6 @@
-import React from 'react';
-import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { router } from "expo-router";
+import React from "react";
+import { Image, View, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function Index() {
   return (
@@ -15,12 +16,16 @@ export default function Index() {
         <Text style={styles.title}>EXPENSE</Text>
         <Text style={styles.title}>TRACKER</Text>
         <Text style={styles.subtitle}>
-          The right app make it easy to manage your expenses on the go. Personal Capital - Expensify
+          The right app make it easy to manage your expenses on the go. Personal
+          Capital - Expensify
         </Text>
 
-      <TouchableOpacity style={styles.nextButton}>
-        <Text style={styles.nextButtonText}>Next</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.nextButton}
+          onPress={() => router.push("/add")}
+        >
+          <Text style={styles.nextButtonText}>Next</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -29,42 +34,42 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1A1A1A',
-    justifyContent: 'space-around',
+    backgroundColor: "#1A1A1A",
+    justifyContent: "space-around",
   },
   imageContainer: {
-    position: 'relative',
-    alignItems: 'center',
+    position: "relative",
+    alignItems: "center",
   },
   cardImage: {
     width: 500,
     height: 300,
-    position: 'absolute',
+    position: "absolute",
     top: -50,
     left: -50,
     zIndex: 1,
   },
   textContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   title: {
     fontSize: 50,
-    fontWeight: '800',
-    fontStyle: 'italic',
-    color: '#ffffff',
-    textTransform: 'uppercase',
+    fontWeight: "800",
+    fontStyle: "italic",
+    color: "#ffffff",
+    textTransform: "uppercase",
     letterSpacing: 2,
   },
   subtitle: {
     fontSize: 14,
-    color: '#B0B0B0',
-    textAlign: 'center',
+    color: "#B0B0B0",
+    textAlign: "center",
     marginBottom: 20,
     marginTop: 20,
     paddingHorizontal: 20,
   },
   nextButton: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     paddingVertical: 10,
     paddingHorizontal: 30,
     borderRadius: 25,
@@ -72,8 +77,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   nextButtonText: {
-    color: '#1A1A1A',
+    color: "#1A1A1A",
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
   },
 });
